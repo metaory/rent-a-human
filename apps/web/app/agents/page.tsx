@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
@@ -16,7 +16,10 @@ export default function AgentsPage() {
 	const initialQuery = searchParams.get("q") || "";
 	const initialCategory = searchParams.get("category") || "";
 
-	const { agents, categories } = useStore();
+	const { agents, categories, refetchAgents } = useStore();
+	useEffect(() => {
+		if (searchParams.get("new")) refetchAgents();
+	}, [searchParams, refetchAgents]);
 	const [query, setQuery] = useState(initialQuery);
 	const [selectedCategory, setSelectedCategory] = useState(initialCategory);
 	const [sort, setSort] = useState<SortOption>("rating");

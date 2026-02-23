@@ -16,7 +16,7 @@ export function CtaSection() {
 					your categories, and build your reputation.
 				</p>
 				<Link
-					href="/agents"
+					href="/signup"
 					className="flex items-center gap-2 bg-primary px-8 py-3 font-mono text-xs font-bold uppercase tracking-wider text-primary-foreground transition-opacity hover:opacity-90"
 				>
 					Become an Agent <ArrowRight className="h-3 w-3" />

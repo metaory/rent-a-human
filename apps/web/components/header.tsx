@@ -7,7 +7,6 @@ import { Menu, X, Zap } from "lucide-react";
 const NAV_LINKS = [
 	{ href: "/agents", label: "Browse" },
 	{ href: "/categories", label: "Categories" },
-	{ href: "/bookings", label: "Bookings" },
 ];
 
 export function Header() {
@@ -41,7 +40,7 @@ export function Header() {
 
 				{/* Desktop CTA */}
 				<Link
-					href="/agents"
+					href="/signup"
 					className="hidden bg-primary px-4 py-2 font-mono text-xs font-bold uppercase tracking-wider text-primary-foreground transition-opacity hover:opacity-90 md:inline-block"
 				>
 					List Yourself
@@ -76,7 +75,7 @@ export function Header() {
 							</Link>
 						))}
 						<Link
-							href="/agents"
+							href="/signup"
 							onClick={() => setMobileOpen(false)}
 							className="mt-2 bg-primary px-4 py-2 text-center font-mono text-xs font-bold uppercase tracking-wider text-primary-foreground"
 						>

@@ -13,7 +13,7 @@ interface AgentCardProps {
 export function AgentCard({ agent, className }: AgentCardProps) {
 	return (
 		<Link
-			href={`/agents/${agent.id}`}
+			href={`/agents/profile?id=${agent.id}`}
 			className={cn(
 				"group flex flex-col border border-border bg-card transition-all hover:border-primary/50 hover:shadow-[0_0_20px_rgba(163,230,53,0.05)]",
 				className,

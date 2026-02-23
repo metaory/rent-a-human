@@ -5,3 +5,14 @@ compatibility_date = "2025-01-01"
 
 [vars]
 # optional env
+
+[[kv_namespaces]]
+binding = "AGENTS"
+id = "b24b23c5328640b2a880cbf63b41a62d"
+# Run: wrangler kv:namespace create "AGENTS" then paste id here.
+# For local dev: wrangler kv:namespace create "AGENTS" --preview, add [env.dev] with that id.
+
+[env.dev]
+[[env.dev.kv_namespaces]]
+binding = "AGENTS"
+id = "d65f41955442408e83f91be8f89e4573"

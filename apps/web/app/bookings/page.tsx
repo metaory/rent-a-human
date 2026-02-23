@@ -49,7 +49,7 @@ export default function BookingsPage() {
 									<div className="flex flex-col gap-2">
 										<div className="flex items-center gap-3">
 											<Link
-												href={`/agents/${booking.agentId}`}
+												href={`/agents/profile?id=${booking.agentId}`}
 												className="text-sm font-semibold text-foreground transition-colors hover:text-primary"
 											>
 												{booking.agentName}
@@ -92,6 +92,7 @@ export default function BookingsPage() {
 									<div className="flex shrink-0 gap-2">
 										{booking.status === "completed" && (
 											<button
+												type="button"
 												onClick={() => setReviewBooking(booking)}
 												className="bg-primary px-4 py-2 font-mono text-[10px] font-bold uppercase tracking-wider text-primary-foreground transition-opacity hover:opacity-90"
 											>
@@ -99,7 +100,7 @@ export default function BookingsPage() {
 											</button>
 										)}
 										<Link
-											href={`/agents/${booking.agentId}`}
+											href={`/agents/profile?id=${booking.agentId}`}
 											className="border border-border px-4 py-2 font-mono text-[10px] font-bold uppercase tracking-wider text-foreground transition-colors hover:border-primary hover:text-primary"
 										>
 											View Agent

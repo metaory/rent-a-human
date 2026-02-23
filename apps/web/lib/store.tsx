@@ -5,6 +5,7 @@ import {
 	useContext,
 	useState,
 	useCallback,
+	useEffect,
 	type ReactNode,
 } from "react";
 import {
@@ -19,12 +20,14 @@ import {
 	generateId,
 	slugify,
 } from "./data";
+import { getAgents } from "./api";
 
 interface StoreContextType {
 	agents: Agent[];
 	categories: Category[];
 	bookings: Booking[];
 	reviews: Review[];
+	refetchAgents: () => Promise<void>;
 	addCategory: (name: string) => Category;
 	addBooking: (booking: Omit<Booking, "id" | "createdAt">) => Booking;
 	addReview: (review: Omit<Review, "id" | "createdAt">) => Review;
@@ -34,10 +37,22 @@ interface StoreContextType {
 const StoreContext = createContext<StoreContextType | null>(null);
 
 export function StoreProvider({ children }: { children: ReactNode }) {
-	const [agents] = useState<Agent[]>(INITIAL_AGENTS);
+	const [agents, setAgents] = useState<Agent[]>(INITIAL_AGENTS);
 	const [categories, setCategories] = useState<Category[]>(INITIAL_CATEGORIES);
 	const [bookings, setBookings] = useState<Booking[]>(INITIAL_BOOKINGS);
 	const [reviews, setReviews] = useState<Review[]>(INITIAL_REVIEWS);
+
+	useEffect(() => {
+		getAgents()
+			.then((list) => list?.length && setAgents(list))
+			.catch(() => {});
+	}, []);
+
+	const refetchAgents = useCallback(() => {
+		return getAgents()
+			.then((list) => list?.length && setAgents(list))
+			.catch(() => {});
+	}, []);
 
 	const addCategory = useCallback(
 		(name: string): Category => {
@@ -97,6 +112,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
 				categories,
 				bookings,
 				reviews,
+				refetchAgents,
 				addCategory,
 				addBooking,
 				addReview,

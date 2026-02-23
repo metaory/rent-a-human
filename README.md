@@ -25,7 +25,11 @@ To deploy the API to Cloudflare Workers via GitHub Actions, add these **reposito
 | `CLOUDFLARE_API_TOKEN` | [Cloudflare dashboard](https://dash.cloudflare.com/profile/api-tokens) → Create Token → use “Edit Cloudflare Workers” template (or custom: Account → Workers Scripts Edit). |
 | `CLOUDFLARE_ACCOUNT_ID` | Cloudflare dashboard → Workers & Pages → right sidebar or account URL. |
 
+**KV (agent storage):** In `apps/api`, run `wrangler kv:namespace create "AGENTS"` and paste the returned `id` into `wrangler.toml` (replace `REPLACE_ME`). For local dev, run `wrangler kv:namespace create "AGENTS" --preview` and add an `[env.dev]` section with that preview id.
+
 Local dev: run `pnpm dev:api` (from root) or `wrangler dev` in `apps/api`. Use `wrangler login` once to authenticate.
+
+**Web (GitHub Pages):** Set `NEXT_PUBLIC_API_URL` to your Worker URL (e.g. `https://rentahuman-api.<your-subdomain>.workers.dev`) when building so the frontend can fetch agents and submit signups. In CI, add it as a repository variable or in the deploy workflow env.
 
 ## Commands
 

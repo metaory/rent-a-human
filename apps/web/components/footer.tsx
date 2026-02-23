@@ -40,12 +40,6 @@ export function Footer() {
 							>
 								Categories
 							</Link>
-							<Link
-								href="/bookings"
-								className="text-sm text-muted-foreground transition-colors hover:text-primary"
-							>
-								Your Bookings
-							</Link>
 						</div>
 						<div className="flex flex-col gap-3">
 							<span className="font-mono text-xs font-bold uppercase tracking-wider text-foreground">
