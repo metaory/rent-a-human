@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { Suspense, useState, useMemo, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
@@ -11,7 +11,7 @@ import { Search, SlidersHorizontal, X } from "lucide-react";
 
 type SortOption = "rating" | "price-low" | "price-high" | "reviews";
 
-export default function AgentsPage() {
+function AgentsPageContent() {
 	const searchParams = useSearchParams();
 	const initialQuery = searchParams.get("q") || "";
 	const initialCategory = searchParams.get("category") || "";
@@ -246,5 +246,23 @@ export default function AgentsPage() {
 			</main>
 			<Footer />
 		</div>
+	);
+}
+
+export default function AgentsPage() {
+	return (
+		<Suspense
+			fallback={
+				<div className="flex min-h-screen flex-col">
+					<Header />
+					<main className="flex flex-1 items-center justify-center px-4">
+						<p className="text-muted-foreground">Loading…</p>
+					</main>
+					<Footer />
+				</div>
+			}
+		>
+			<AgentsPageContent />
+		</Suspense>
 	);
 }
