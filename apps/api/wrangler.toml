@@ -1,0 +1,7 @@
+name = "rentahuman-api"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+# account_id: set via CLOUDFLARE_ACCOUNT_ID in CI or `wrangler login` for local
+
+[vars]
+# optional env

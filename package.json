@@ -1,0 +1,11 @@
+{
+	"name": "rentahuman",
+	"private": true,
+	"scripts": {
+		"dev:web": "pnpm --filter web dev",
+		"dev:api": "pnpm --filter api dev",
+		"build:web": "pnpm --filter web build",
+		"lint": "biome check .",
+		"format": "biome format --write ."
+	}
+}
