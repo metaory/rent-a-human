@@ -1,0 +1,1 @@
+This folder contains the built output assets for the worker "rentahuman-api" generated at 2026-02-23T09:13:12.232Z.
