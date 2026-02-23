@@ -11,7 +11,11 @@ import { AttributeBar } from "@/components/attribute-bar";
 import { ReviewCard } from "@/components/review-card";
 import { BookingDialog } from "@/components/booking-dialog";
 import { useStore } from "@/lib/store";
-import { getReviewsByAgent } from "@/lib/data";
+import { getReviewsByAgent, INITIAL_AGENTS } from "@/lib/data";
+
+export function generateStaticParams() {
+	return INITIAL_AGENTS.map((a) => ({ id: a.id }));
+}
 import {
 	ShieldCheck,
 	MapPin,
