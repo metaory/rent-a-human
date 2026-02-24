@@ -1,6 +1,7 @@
 "use client";
 
 import { StoreProvider } from "@/lib/store";
+import TargetCursor from "@/components/TargetCursor";
 import { Toaster } from "sonner";
 import type { ReactNode } from "react";
 
@@ -8,6 +9,7 @@ export function Providers({ children }: { children: ReactNode }) {
 	return (
 		<StoreProvider>
 			{children}
+			<TargetCursor />
 			<Toaster
 				theme="dark"
 				toastOptions={{

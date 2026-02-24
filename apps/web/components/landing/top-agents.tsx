@@ -22,7 +22,7 @@ export function TopAgents() {
 				</div>
 				<Link
 					href="/agents"
-					className="hidden items-center gap-1 font-mono text-xs uppercase tracking-wider text-muted-foreground transition-colors hover:text-primary md:flex"
+					className="cursor-target hidden items-center gap-1 font-mono text-xs uppercase tracking-wider text-muted-foreground transition-colors hover:text-primary md:flex"
 				>
 					View all <ArrowRight className="h-3 w-3" />
 				</Link>
@@ -37,7 +37,7 @@ export function TopAgents() {
 			<div className="mt-6 flex justify-center md:hidden">
 				<Link
 					href="/agents"
-					className="flex items-center gap-1 font-mono text-xs uppercase tracking-wider text-muted-foreground transition-colors hover:text-primary"
+					className="cursor-target flex items-center gap-1 font-mono text-xs uppercase tracking-wider text-muted-foreground transition-colors hover:text-primary"
 				>
 					View all agents <ArrowRight className="h-3 w-3" />
 				</Link>

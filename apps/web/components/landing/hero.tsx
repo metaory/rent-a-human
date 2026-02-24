@@ -5,6 +5,9 @@ import { useStore } from "@/lib/store";
 import { ArrowRight, Search } from "lucide-react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import DarkVeil from "@/components/DarkVeil";
+import TrueFocus from "@/components/TrueFocus";
+import TextType from "@/components/TextType";
 
 export function Hero() {
 	const { agents, categories } = useStore();
@@ -22,6 +25,14 @@ export function Hero() {
 
 	return (
 		<section className="relative flex min-h-[85vh] flex-col items-center justify-center px-4 py-24">
+			<div className="pointer-events-none absolute inset-0 opacity-90">
+				<DarkVeil
+					speed={0.4}
+					hueShift={120}
+					tint={[0.45, 0.88, 0.55]}
+					tintStrength={0.5}
+				/>
+			</div>
 			{/* Grid overlay */}
 			<div
 				className="pointer-events-none absolute inset-0 opacity-[0.03]"
@@ -36,13 +47,28 @@ export function Hero() {
 				{/* Status line */}
 				<div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted-foreground">
 					<span className="h-2 w-2 bg-primary" />
-					<span>Human as a Service</span>
+					<TextType
+						text="Human as a Service"
+						as="span"
+						className="tracking-widest"
+						showCursor={true}
+						cursorCharacter="█"
+						typingSpeed={40}
+						pauseDuration={12_000}
+						loop={true}
+					/>
 				</div>
 
 				{/* Headline */}
 				<h1 className="text-balance font-mono text-5xl font-bold uppercase leading-none tracking-tight text-foreground md:text-7xl lg:text-8xl">
-					Rent a<br />
-					<span className="text-primary">Human</span>
+					<TrueFocus
+						lines={["Rent a", "Human"]}
+						className="block w-full"
+						wordClassName="relative font-black cursor-pointer"
+						lineClassName={["", "text-primary"]}
+						borderColor="hsl(var(--primary))"
+						glowColor="hsl(var(--primary) / 0.6)"
+					/>
 				</h1>
 
 				<p className="max-w-md text-pretty text-base leading-relaxed text-muted-foreground md:text-lg">
@@ -67,7 +93,7 @@ export function Hero() {
 					/>
 					<button
 						type="submit"
-						className="bg-primary px-4 font-mono text-xs font-bold uppercase tracking-wider text-primary-foreground transition-opacity hover:opacity-90"
+						className="cursor-target bg-primary px-4 font-mono text-xs font-bold uppercase tracking-wider text-primary-foreground transition-opacity hover:opacity-90"
 					>
 						Go
 					</button>
@@ -77,13 +103,13 @@ export function Hero() {
 				<div className="flex gap-3">
 					<Link
 						href="/agents"
-						className="flex items-center gap-2 bg-primary px-6 py-3 font-mono text-xs font-bold uppercase tracking-wider text-primary-foreground transition-opacity hover:opacity-90"
+						className="cursor-target flex items-center gap-2 bg-primary px-6 py-3 font-mono text-xs font-bold uppercase tracking-wider text-primary-foreground transition-opacity hover:opacity-90"
 					>
 						Browse Agents <ArrowRight className="h-3 w-3" />
 					</Link>
 					<Link
 						href="/categories"
-						className="flex items-center gap-2 border border-border px-6 py-3 font-mono text-xs font-bold uppercase tracking-wider text-foreground transition-colors hover:border-primary hover:text-primary"
+						className="cursor-target flex items-center gap-2 border border-border px-6 py-3 font-mono text-xs font-bold uppercase tracking-wider text-foreground transition-colors hover:border-primary hover:text-primary"
 					>
 						View Categories
 					</Link>

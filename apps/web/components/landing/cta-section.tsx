@@ -17,7 +17,7 @@ export function CtaSection() {
 				</p>
 				<Link
 					href="/signup"
-					className="flex items-center gap-2 bg-primary px-8 py-3 font-mono text-xs font-bold uppercase tracking-wider text-primary-foreground transition-opacity hover:opacity-90"
+					className="cursor-target flex items-center gap-2 bg-primary px-8 py-3 font-mono text-xs font-bold uppercase tracking-wider text-primary-foreground transition-opacity hover:opacity-90"
 				>
 					Become an Agent <ArrowRight className="h-3 w-3" />
 				</Link>
