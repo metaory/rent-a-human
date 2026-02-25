@@ -7,6 +7,10 @@ import "./globals.css";
 const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
+const base = process.env.GITHUB_REPOSITORY
+	? `/${process.env.GITHUB_REPOSITORY.split("/")[1]}`
+	: "";
+
 export const metadata: Metadata = {
 	title: "RENT A HUMAN | Human as a Service",
 	description:
@@ -14,18 +18,18 @@ export const metadata: Metadata = {
 	generator: "v0.app",
 	icons: {
 		icon: [
-			{ url: "/favicon.ico", sizes: "any" },
+			{ url: `${base}/favicon.ico`, sizes: "any" },
 			{
-				url: "/icon-light-32x32.png",
+				url: `${base}/icon-light-32x32.png`,
 				media: "(prefers-color-scheme: light)",
 			},
 			{
-				url: "/icon-dark-32x32.png",
+				url: `${base}/icon-dark-32x32.png`,
 				media: "(prefers-color-scheme: dark)",
 			},
-			{ url: "/icon.svg", type: "image/svg+xml" },
+			{ url: `${base}/icon.svg`, type: "image/svg+xml" },
 		],
-		apple: "/apple-icon.png",
+		apple: `${base}/apple-icon.png`,
 	},
 };
 
@@ -40,8 +44,12 @@ export default function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
+	const faviconHref = base ? `${base}/favicon.ico` : "/favicon.ico";
 	return (
 		<html lang="en" className="dark">
+			<head>
+				<link rel="icon" href={faviconHref} sizes="any" />
+			</head>
 			<body className="font-sans antialiased">
 				<Providers>{children}</Providers>
 				<Analytics />
